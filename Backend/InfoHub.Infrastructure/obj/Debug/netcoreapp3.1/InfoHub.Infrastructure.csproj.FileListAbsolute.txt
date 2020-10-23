@@ -1,0 +1,12 @@
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\bin\Debug\netcoreapp3.1\InfoHub.Infrastructure.deps.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\bin\Debug\netcoreapp3.1\InfoHub.Infrastructure.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.csprojAssemblyReference.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.AssemblyInfo.cs
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\bin\Debug\netcoreapp3.1\InfoHub.Infrastructure.pdb
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\bin\Debug\netcoreapp3.1\InfoHub.Core.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\bin\Debug\netcoreapp3.1\InfoHub.Core.pdb
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.csproj.CopyComplete
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Infrastructure\obj\Debug\netcoreapp3.1\InfoHub.Infrastructure.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\balci\\source\\repos\\InfoHub\\InfoHub\\InfoHub.csproj": {}
+    "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub\\InfoHub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\balci\\source\\repos\\InfoHub\\InfoHub\\InfoHub.csproj": {
+    "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub\\InfoHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\balci\\source\\repos\\InfoHub\\InfoHub\\InfoHub.csproj",
+        "projectUniqueName": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub\\InfoHub.csproj",
         "projectName": "InfoHub",
-        "projectPath": "C:\\Users\\balci\\source\\repos\\InfoHub\\InfoHub\\InfoHub.csproj",
+        "projectPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub\\InfoHub.csproj",
         "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\balci\\source\\repos\\InfoHub\\InfoHub\\obj\\",
+        "outputPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",

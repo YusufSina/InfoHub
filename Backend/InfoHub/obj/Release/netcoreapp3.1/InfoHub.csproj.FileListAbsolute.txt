@@ -1,0 +1,21 @@
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\appsettings.Development.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\appsettings.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\Properties\ServiceDependencies\infohubapp - Web Deploy\profile.arm.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\InfoHub.exe
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\InfoHub.deps.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\InfoHub.runtimeconfig.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\InfoHub.runtimeconfig.dev.json
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\InfoHub.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\bin\Release\netcoreapp3.1\InfoHub.pdb
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.AssemblyInfoInputs.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.AssemblyInfo.cs
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.csproj.CoreCompileInputs.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.RazorTargetAssemblyInfo.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\staticwebassets\InfoHub.StaticWebAssets.Manifest.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\staticwebassets\InfoHub.StaticWebAssets.xml
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.pdb
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.genruntimeconfig.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub\obj\Release\netcoreapp3.1\InfoHub.csprojAssemblyReference.cache
