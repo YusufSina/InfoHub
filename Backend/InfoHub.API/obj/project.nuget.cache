@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "2km3kAI/VyOmqSqdwkn3os2O8OQR6M56FbuWlzt1+XL21pYJthwyNTnBu3MQqbJmwc85ftqsAEC0x/D5Y1EIWA==",
+  "dgSpecHash": "6pPHXaDEuk2PUjZ0gdCiBsLZAt+wxnKUHHVb6otN6r3eDAqr6BhoQTn4jPPZM9YpbPyyEYewGsSMQLQxVx7Ehg==",
   "success": true,
   "projectFilePath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.API\\InfoHub.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\balci\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\balci\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.9\\microsoft.aspnetcore.jsonpatch.3.1.9.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.9\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.9.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
@@ -31,6 +33,7 @@
     "C:\\Users\\balci\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
+    "C:\\Users\\balci\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.6.0\\system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
   "logs": []

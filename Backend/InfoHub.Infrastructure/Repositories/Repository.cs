@@ -17,10 +17,7 @@ namespace InfoHub.Infrastructure.Repositories
         private readonly DbSet<T> _dbSet;
         public Repository(InfoHubContext dbContext)
         {
-            if (dbContext == null)
-                throw new ArgumentNullException("dbContext can not be null.");
-
-            _dbContext = dbContext;
+            _dbContext = dbContext ?? throw new ArgumentNullException("dbContext can not be null.");
             _dbSet = dbContext.Set<T>();
         }
 
@@ -43,7 +40,10 @@ namespace InfoHub.Infrastructure.Repositories
         {
             return await _dbSet.Where(predicate).FirstOrDefaultAsync();
         }
-
+        public T Get(Expression<Func<T, bool>> predicate)
+        {
+            return _dbSet.Where(predicate).FirstOrDefault();
+        }
         public void Add(T entity)
         {
             _dbSet.Add(entity);
@@ -100,5 +100,7 @@ namespace InfoHub.Infrastructure.Repositories
                 }
             }
         }
+
+       
     }
 }

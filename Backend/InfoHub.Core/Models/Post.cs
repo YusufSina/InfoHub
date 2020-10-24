@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InfoHub.Core.Models
 {
@@ -8,10 +9,11 @@ namespace InfoHub.Core.Models
         public string Title { get; set; }
         public string Link { get; set; }
         public int Point { get; set; }
-        public long CreatedAt { get; set; }
-        public long UpdatedAt { get; set; }
-        public long DeletedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime DeletedAt { get; set; } = DateTime.Now;
         public int UserId { get; set; }
+        [ForeignKey("UserId")]
         public User User { get; set; }
     }
 }

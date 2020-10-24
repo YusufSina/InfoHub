@@ -1,21 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using InfoHub.Core.Interfaces;
 using InfoHub.Core.Services;
 using InfoHub.Infrastructure.Data;
 using InfoHub.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using AutoMapper;
 
 namespace InfoHub.API
 {
@@ -41,12 +36,12 @@ namespace InfoHub.API
             var databaseConfiguration = Configuration.GetConnectionString("DefaultConnection") +
                 "password=" + Configuration["DbPassword"];
 
-            services.AddDbContext<InfoHubContext>(options =>
-                   options.UseNpgsql(databaseConfiguration, options => { })
-               , ServiceLifetime.Scoped);
+            services.AddAutoMapper(typeof(Startup));
 
+            services.AddDbContext<InfoHubContext>(options => options.UseNpgsql(databaseConfiguration), ServiceLifetime.Scoped);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<IPostService, PostService>();
         }
 
