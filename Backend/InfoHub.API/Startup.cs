@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using AutoMapper;
+using InfoHub.API.Middlewares;
 
 namespace InfoHub.API
 {
@@ -42,7 +43,9 @@ namespace InfoHub.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ITokenService, TokenService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -51,7 +54,7 @@ namespace InfoHub.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseMiddleware<JwtMiddleware>();
             app.UseHttpsRedirection();
 
             app.UseRouting();

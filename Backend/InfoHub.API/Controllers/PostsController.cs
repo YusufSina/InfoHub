@@ -1,4 +1,5 @@
-﻿using InfoHub.Core.Dtos;
+﻿using InfoHub.API.Attributes;
+using InfoHub.Core.Dtos;
 using InfoHub.Core.Helpers;
 using InfoHub.Core.Interfaces;
 using InfoHub.Core.Models;
@@ -11,10 +12,10 @@ using System.Threading.Tasks;
 namespace InfoHub.API.Controllers
 {
     [Route("api/[controller]")]
+    //[Authorize]
     public class PostsController : ControllerBase
     {
         private readonly IPostService _postService;
-
         public PostsController(IPostService postService)
         {
             _postService = postService;

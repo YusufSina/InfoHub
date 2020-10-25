@@ -47,5 +47,11 @@ C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\obj\Debug\netcore
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\obj\Debug\netcoreapp3.1\InfoHub.API.genruntimeconfig.cache
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\obj\Debug\netcoreapp3.1\InfoHub.API.csproj.CoreCompileInputs.cache
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\obj\Debug\netcoreapp3.1\InfoHub.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
