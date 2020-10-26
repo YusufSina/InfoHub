@@ -1,0 +1,23 @@
+Client/node_modules/**/*
+Client/.expo/*
+Client/.expo-shared
+Client/.vscode
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+
+# macOS
+.DS_Store
+
+Backend/.vscode/*
+Backend/.idea/*
+Backend/.vs/*
+Backend/InfoHub.API/bin/*
+Backend/InfoHub.API/obj/*
+Backend/InfoHub.API/.idea/*
