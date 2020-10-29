@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6qjlVN/R+E9RMw2848B6Bgxkyq5fwkwGck7rUmDyxl3fBUsaZmRZD7H80L1Q4fXxvY1RQyJ4/LE1WHariCo7dg==",
+  "dgSpecHash": "aXpa3UxTuLTXrm1VovemMRphedD1lqEQXfSHGEGr7QTLda3XT1zb2bKnOlVNRWcCiKJKuB2uAqWJkAsGZIq4eQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Infrastructure\\InfoHub.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Infrastructure\\InfoHub.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\balci\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\balci\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.9\\microsoft.aspnetcore.cryptography.internal.3.1.9.nupkg.sha512",

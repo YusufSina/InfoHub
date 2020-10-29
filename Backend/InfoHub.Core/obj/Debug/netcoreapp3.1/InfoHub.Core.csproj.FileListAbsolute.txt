@@ -6,3 +6,12 @@ C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Core\obj\Debug\netcor
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.dll
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.pdb
 C:\Users\balci\OneDrive\Masaüstü\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.csproj.CoreCompileInputs.cache
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\bin\Debug\netcoreapp3.1\InfoHub.Core.deps.json
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\bin\Debug\netcoreapp3.1\InfoHub.Core.dll
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\bin\Debug\netcoreapp3.1\InfoHub.Core.pdb
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.csprojAssemblyReference.cache
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.AssemblyInfoInputs.cache
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.AssemblyInfo.cs
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.csproj.CoreCompileInputs.cache
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.dll
+C:\Users\balci\OneDrive\Belgeler\GitHub\InfoHub\Backend\InfoHub.Core\obj\Debug\netcoreapp3.1\InfoHub.Core.pdb

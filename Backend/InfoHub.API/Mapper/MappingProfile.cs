@@ -14,6 +14,8 @@ namespace InfoHub.API.Mapper
             CreateMap<User, ResponseAuthDto>();
             CreateMap<Post, PostDto>();
             CreateMap<PostDto, Post>();
+            CreateMap<Comment, CommentDto>();
+            CreateMap<CommentDto, Comment>();
         }
     }
 }

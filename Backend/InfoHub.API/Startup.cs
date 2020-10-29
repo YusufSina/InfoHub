@@ -43,8 +43,10 @@ namespace InfoHub.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPostRepository, PostRepository>();
+            services.AddTransient<ICommentRepository,CommentRepository>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<ITokenService, TokenService>();
         }
 

@@ -1086,11 +1086,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Infrastructure\\InfoHub.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Infrastructure\\InfoHub.Infrastructure.csproj",
       "projectName": "InfoHub.Infrastructure",
-      "projectPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Infrastructure\\InfoHub.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Infrastructure\\InfoHub.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1106,8 +1106,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj": {
-              "projectPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj"
+            "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj": {
+              "projectPath": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj"
             }
           }
         }

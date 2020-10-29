@@ -21,3 +21,8 @@ Backend/.vs/*
 Backend/InfoHub.API/bin/*
 Backend/InfoHub.API/obj/*
 Backend/InfoHub.API/.idea/*
+Backend/InfoHub.Core/bin/*
+Backend/InfoHub.Core/obj/*
+Backend/InfoHub.Infrastructure/bin/*
+Backend/InfoHub.Infrastructure/obj/*
+Backend/InfoHub.API/.idea/*

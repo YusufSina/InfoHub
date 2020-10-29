@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InfoHub.Core.Models
@@ -15,5 +16,6 @@ namespace InfoHub.Core.Models
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }
+        public List<Category> Categories { get; set; }
     }
 }

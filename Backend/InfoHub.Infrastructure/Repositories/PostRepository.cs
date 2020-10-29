@@ -19,12 +19,48 @@ namespace InfoHub.Infrastructure.Repositories
             _context = context;
         }
         public async Task<List<Post>> GetAllPostsAsync() =>
-             await _context.Posts.Include(x => x.User)
+             await _context.Posts
+                    .Select(x => new Post
+                    {
+                        Id = x.Id,
+                        Link = x.Link,
+                        Title = x.Title,
+                        Point = x.Point,
+                        User = x.User,
+                        CreatedAt = x.CreatedAt,
+                        Categories = (from postCategory in _context.CategoryPosts
+                                      join category in _context.Categories on postCategory.CategoryId equals category.Id
+                                      where postCategory.PostId == x.Id
+                                      select new Category
+                                      {
+                                          Id = category.Id,
+                                          Name = category.Name
+                                      }).ToList()
+                    })
                     .OrderByDescending(x=>x.Point)
-                    .Take(20).ToListAsync();
+                    .Take(20)
+                    .ToListAsync();
 
         public Post GetPost(int id) =>
-            _context.Posts.Include(x => x.User).Where(x => x.Id == id).SingleOrDefault();
+            _context.Posts.Where(x => x.Id == id)
+             .Select(x => new Post
+             {
+                 Id = x.Id,
+                 Link = x.Link,
+                 Title = x.Title,
+                 Point = x.Point,
+                 User = x.User,
+                 CreatedAt = x.CreatedAt,
+                 Categories = (from postCategory in _context.CategoryPosts
+                               join category in _context.Categories on postCategory.CategoryId equals category.Id
+                               where postCategory.PostId == x.Id
+                               select new Category
+                               {
+                                   Id = category.Id,
+                                   Name = category.Name
+                               }).ToList()
+             })
+            .SingleOrDefault();
         
     }
 }

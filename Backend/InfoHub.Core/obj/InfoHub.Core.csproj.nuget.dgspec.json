@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj": {}
+    "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj": {}
   },
   "projects": {
-    "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj": {
+    "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj",
+        "projectUniqueName": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj",
         "projectName": "InfoHub.Core",
-        "projectPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj",
+        "projectPath": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\InfoHub.Core.csproj",
         "packagesPath": "C:\\Users\\balci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\balci\\OneDrive\\Masaüstü\\InfoHub\\Backend\\InfoHub.Core\\obj\\",
+        "outputPath": "C:\\Users\\balci\\OneDrive\\Belgeler\\GitHub\\InfoHub\\Backend\\InfoHub.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\balci\\AppData\\Roaming\\NuGet\\NuGet.Config",
