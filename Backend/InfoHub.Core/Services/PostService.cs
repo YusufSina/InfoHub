@@ -55,11 +55,17 @@ namespace InfoHub.Core.Services
         }
         public void UpVote(int id)
         {
-            throw new NotImplementedException();
+            var post = _postRepository.GetPost(id);
+            post.Point += 1;
+            _postRepository.Update(post);
+            _unitOfWork.Complete();
         }
         public void DownVote(int id)
         {
-            throw new NotImplementedException();
+            var post = _postRepository.GetPost(id);
+            post.Point -= 1;
+            _postRepository.Update(post);
+            _unitOfWork.Complete();
         }
     }
 }

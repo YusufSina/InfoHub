@@ -28,6 +28,7 @@ namespace InfoHub.Infrastructure.Repositories
                         Point = x.Point,
                         User = x.User,
                         CreatedAt = x.CreatedAt,
+                        CommentCount = _context.Comments.Where(c=>c.PostId == x.Id).Count(),
                         Categories = (from postCategory in _context.CategoryPosts
                                       join category in _context.Categories on postCategory.CategoryId equals category.Id
                                       where postCategory.PostId == x.Id

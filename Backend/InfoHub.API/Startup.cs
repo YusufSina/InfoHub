@@ -41,12 +41,13 @@ namespace InfoHub.API
 
             services.AddDbContext<InfoHubContext>(options => options.UseNpgsql(databaseConfiguration), ServiceLifetime.Scoped);
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ICommentRepository,CommentRepository>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<ITokenService, TokenService>();
         }
 

@@ -13,6 +13,8 @@ namespace InfoHub.Core.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public DateTime DeletedAt { get; set; } = DateTime.Now;
+        [NotMapped]
+        public int CommentCount { get; set; }
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }

@@ -20,22 +20,18 @@ namespace InfoHub.Infrastructure.Repositories
             _dbContext = dbContext ?? throw new ArgumentNullException("dbContext can not be null.");
             _dbSet = dbContext.Set<T>();
         }
-
         public async Task<List<T>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
-
         public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).ToListAsync();
         }
-
         public async Task<T> GetByIdAsync(int id)
         {
             return await _dbSet.FindAsync(id);
         }
-
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
             return await _dbSet.Where(predicate).FirstOrDefaultAsync();
@@ -54,7 +50,6 @@ namespace InfoHub.Infrastructure.Repositories
             _dbContext.Set<T>().Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
         }
-
         public void Delete(T entity)
         {
             if (entity.GetType().GetProperty("IsDeleted") != null)
@@ -80,7 +75,6 @@ namespace InfoHub.Infrastructure.Repositories
                 }
             }
         }
-
         public async Task Delete(int id)
         {
             var entity = GetByIdAsync(id);
@@ -100,7 +94,5 @@ namespace InfoHub.Infrastructure.Repositories
                 }
             }
         }
-
-       
     }
 }

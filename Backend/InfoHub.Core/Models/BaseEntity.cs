@@ -1,4 +1,6 @@
-﻿namespace InfoHub.Core.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace InfoHub.Core.Models
 {
     public class BaseEntity
     {
