@@ -1,12 +1,16 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Platform, SafeAreaView } from 'react-native'
+import WebView from 'react-native-webview'
 import Card from '../../components/card'
+import TopBar from '../../components/topbar'
 
-export default function Posts() {
+export default function Posts({ navigation }) {
     return (
-        <View>
-            <Card></Card>
-            <Card></Card>
-        </View>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white', paddingTop: Platform.OS === "android" ? 20 : 0 }}>
+            <TopBar title="Stream" rightIcon="setting" />
+
+            <Card navigation={navigation} />
+            <Card navigation={navigation} />
+        </SafeAreaView>
     )
 }

@@ -6,13 +6,15 @@ import Posts from '../screens/HomeScreen/Posts';
 import { AntDesign } from '@expo/vector-icons'
 import AddPost from '../screens/AddPostScreen/AddPost';
 import MyPoints from '../screens/MyPointsScreen/MyPoints';
+import PostWebView from '../screens/HomeScreen/PostWebView';
 
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
     return (
-        <HomeStack.Navigator >
+        <HomeStack.Navigator headerMode="none">
             <HomeStack.Screen name="Posts" component={Posts} />
+            <HomeStack.Screen name="PostWebView" component={PostWebView} />
             {/*<HomeStack.Screen name="PostDetail" component={ } />*/}
         </HomeStack.Navigator>
     );
@@ -22,7 +24,7 @@ const AddPostStack = createStackNavigator();
 
 function AddPostStackScreen() {
     return (
-        <AddPostStack.Navigator >
+        <AddPostStack.Navigator headerMode="none">
             <AddPostStack.Screen name="Add" component={AddPost} />
         </AddPostStack.Navigator>
     );
@@ -32,7 +34,7 @@ const MyPointsStack = createStackNavigator();
 
 function MyPointsStackScreen() {
     return (
-        <MyPointsStack.Navigator >
+        <MyPointsStack.Navigator headerMode="none">
             <MyPointsStack.Screen name="MyPoints" component={MyPoints} />
             {/*<MyPointsStack.Screen name="PostDetail" component={ } />*/}
         </MyPointsStack.Navigator>
@@ -65,7 +67,7 @@ export default function PrivateNavigation() {
     })
 
     return (
-        <Tab.Navigator initialRouteName="Home" screenOptions={handleTabBarIcon} tabBarOptions={{ showLabel: false, inactiveTintColor: 'grey', }}>
+        <Tab.Navigator initialRouteName="Home" screenOptions={handleTabBarIcon} tabBarOptions={{ activeTintColor:"#21618C", showLabel: false, inactiveTintColor: 'grey', }}>
 
             <Tab.Screen name="Home" component={HomeStackScreen} />
             <Tab.Screen name="Add" component={AddPostStackScreen} />
