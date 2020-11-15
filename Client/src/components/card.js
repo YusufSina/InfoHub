@@ -1,7 +1,8 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
+import RNUrlPreview from "react-native-url-preview";
 import { Line } from './line'
 
 function Card({ navigation }) {
@@ -21,10 +22,10 @@ function Card({ navigation }) {
                 </View>
             </View>
 
-            {/** Title */}
-            <Text onPress={() => navigation.navigate('PostWebView')} style={styles.titleText}>
-                React Native WebView - a Modern, Cross-Platform WebView for React Native
-            </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('PostWebView')} >
+                <RNUrlPreview text={"https://elemental.medium.com/the-u-s-is-in-no-shape-for-thanksgiving-a1bd95e40565"} />
+            </TouchableOpacity>
+
 
             {/** Footer */}
             <View style={styles.footer}>
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
     },
     nameText: {
         fontSize: heightPercentageToDP('2.3%'),
-        fontFamily:'Roboto-Medium'
+        fontFamily: 'Roboto-Medium'
     },
     titleText: {
         marginLeft: 10,

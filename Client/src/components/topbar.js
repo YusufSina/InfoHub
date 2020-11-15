@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: heightPercentageToDP('4%'),
-        fontFamily:'Courgette-Regular'
+        fontFamily:'ArchitectsDaughter-Regular'
     },
 })
 
