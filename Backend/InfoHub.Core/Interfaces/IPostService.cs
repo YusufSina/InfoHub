@@ -11,11 +11,17 @@ namespace InfoHub.Core.Interfaces
     public interface IPostService
     {
         Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters);
+        
         Post GetPost(int id);
-        void UpVote(int id);
-        void DownVote(int id);
+        
+        void UpVote(int userId,int id);
+        
+        void DownVote(int userId, int id);
+        
         Post AddPost(PostDto post);
+        
         void DeletePost(int postId);
+        
         void UpdatePost(PostDto post);
     }
 }

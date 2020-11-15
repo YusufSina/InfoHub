@@ -14,25 +14,30 @@ namespace InfoHub.Core.Services
     public class PostService : IPostService
     {
         private readonly IPostRepository _postRepository;
+        private readonly IRepository<UserPoint> _userPointRepository;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public PostService(IPostRepository postRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public PostService(IPostRepository postRepository, IRepository<UserPoint> userPointRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             _postRepository = postRepository;
+            _userPointRepository = userPointRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+        
         public async Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters)
         {
             var posts = await _postRepository.GetAllPostsAsync();
             return PagedList<Post>.ToPagedList(posts.AsQueryable(), paginationParameters.PageNumber, paginationParameters.PageSize);
         }
+       
         public Post GetPost(int id)
         {
             var post = _postRepository.GetPost(id);
             return post;
         }
+        
         public Post AddPost(PostDto post)
         {
             var postMap = _mapper.Map<Post>(post);
@@ -47,24 +52,25 @@ namespace InfoHub.Core.Services
             _postRepository.Delete(post);
             _unitOfWork.Complete();
         }
+        
         public void UpdatePost(PostDto post)
         {
             var postMap = _mapper.Map<Post>(post);
             _postRepository.Update(postMap);
             _unitOfWork.Complete();
         }
-        public void UpVote(int id)
+        
+        public void UpVote(int userId, int id)
         {
-            var post = _postRepository.GetPost(id);
-            post.Point += 1;
-            _postRepository.Update(post);
+            var userPoint = new UserPoint { UserId = userId, PostId = id };
+            _userPointRepository.Add(userPoint);
             _unitOfWork.Complete();
         }
-        public void DownVote(int id)
+
+        public void DownVote(int userId, int id)
         {
-            var post = _postRepository.GetPost(id);
-            post.Point -= 1;
-            _postRepository.Update(post);
+            var userPoint = _userPointRepository.Get(x => x.UserId == userId && x.PostId == id);
+            _userPointRepository.Delete(userPoint);
             _unitOfWork.Complete();
         }
     }

@@ -69,13 +69,17 @@ namespace InfoHub.API.Controllers
         [HttpPost("upvote/{id}")]
         public ActionResult UpVote([FromRoute] int id)
         {
-            _postService.UpVote(id);
+            var userId = (int)HttpContext.Items["UserId"];
+
+            _postService.UpVote(userId,id);
             return new OkResult();
         }
         [HttpPost("downvote/{id}")]
         public ActionResult DownVote([FromRoute] int id)
         {
-            _postService.DownVote(id);
+            var userId = (int)HttpContext.Items["UserId"];
+
+            _postService.DownVote(userId,id);
             return new OkResult();
         }
     }

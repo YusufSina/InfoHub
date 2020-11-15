@@ -35,7 +35,7 @@ namespace InfoHub.API
                 });
 
             var databaseConfiguration = Configuration.GetConnectionString("DefaultConnection") +
-                "password=" + Configuration["DbPassword"];
+                "password=" +/* Configuration["DbPassword"]*/ "V9SAt2wOLiVxI6Yu-TEt5kEWfqXatRo6";
 
             services.AddAutoMapper(typeof(Startup));
 

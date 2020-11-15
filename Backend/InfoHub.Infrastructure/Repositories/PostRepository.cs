@@ -25,10 +25,10 @@ namespace InfoHub.Infrastructure.Repositories
                         Id = x.Id,
                         Link = x.Link,
                         Title = x.Title,
-                        Point = x.Point,
+                        PointCount = _context.UserPoints.Where(up => up.PostId == x.Id).Count(),
                         User = x.User,
                         CreatedAt = x.CreatedAt,
-                        CommentCount = _context.Comments.Where(c=>c.PostId == x.Id).Count(),
+                        CommentCount = _context.Comments.Where(c => c.PostId == x.Id).Count(),
                         Categories = (from postCategory in _context.CategoryPosts
                                       join category in _context.Categories on postCategory.CategoryId equals category.Id
                                       where postCategory.PostId == x.Id
@@ -38,7 +38,7 @@ namespace InfoHub.Infrastructure.Repositories
                                           Name = category.Name
                                       }).ToList()
                     })
-                    .OrderByDescending(x=>x.Point)
+                    .OrderByDescending(x => x.PointCount)
                     .Take(20)
                     .ToListAsync();
 
@@ -49,7 +49,7 @@ namespace InfoHub.Infrastructure.Repositories
                  Id = x.Id,
                  Link = x.Link,
                  Title = x.Title,
-                 Point = x.Point,
+                 PointCount = _context.UserPoints.Where(up => up.PostId == x.Id).Count(),
                  User = x.User,
                  CreatedAt = x.CreatedAt,
                  Categories = (from postCategory in _context.CategoryPosts
@@ -62,6 +62,6 @@ namespace InfoHub.Infrastructure.Repositories
                                }).ToList()
              })
             .SingleOrDefault();
-        
+
     }
 }

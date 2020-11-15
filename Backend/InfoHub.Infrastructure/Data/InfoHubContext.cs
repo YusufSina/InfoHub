@@ -13,5 +13,6 @@ namespace InfoHub.Infrastructure.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<CategoryPost> CategoryPosts { get; set; }
+        public DbSet<UserPoint> UserPoints { get; set; }
     }
 }
