@@ -1,10 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import TopBar from '../../components/topbar'
 
 export default function MyPoints() {
     return (
-        <View>
-            <Text>My Points SCREEN</Text>
-        </View>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <TopBar title="My Points" />
+        </SafeAreaView>
     )
 }
