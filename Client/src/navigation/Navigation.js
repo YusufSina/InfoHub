@@ -4,7 +4,7 @@ import PublicNavigation from './PublicNavigation';
 
 function Navigation() {
 
-    // TODO : isAuthenticated redux'dan gelecek.
+    // TODO: isAuthenticated redux'dan gelecek.
     let isAuthenticated = true;
     return (
         isAuthenticated ? <PrivateNavigation /> : <PublicNavigation />
