@@ -1,5 +1,4 @@
-﻿
-using InfoHub.Core.Interfaces;
+﻿using InfoHub.Core.Interfaces;
 using InfoHub.Core.Models;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -8,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+
 namespace InfoHub.Core.Services
 {
     public class TokenService : ITokenService
@@ -25,7 +25,7 @@ namespace InfoHub.Core.Services
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.Email),
             };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

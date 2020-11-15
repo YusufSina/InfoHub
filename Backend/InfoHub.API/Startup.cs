@@ -44,7 +44,7 @@ namespace InfoHub.API
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             services.AddTransient<IPostRepository, PostRepository>();
             services.AddTransient<ICommentRepository,CommentRepository>();
-            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<ICategoryService, CategoryService>();

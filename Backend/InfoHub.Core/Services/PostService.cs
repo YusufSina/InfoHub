@@ -2,10 +2,7 @@
 using InfoHub.Core.Helpers;
 using InfoHub.Core.Interfaces;
 using InfoHub.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 
