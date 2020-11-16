@@ -8,8 +8,6 @@ export default function Posts({ navigation }) {
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white', paddingTop: Platform.OS === "android" ? 20 : 0 }}>
             <TopBar title="Stream" rightIcon="setting"/>
 
-            <Card navigation={navigation} />
-            <Card navigation={navigation} />
         </SafeAreaView>
     )
 }
