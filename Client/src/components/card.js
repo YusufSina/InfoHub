@@ -1,48 +1,54 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import RNUrlPreview from "react-native-url-preview";
 import { Line } from './line'
+import { format } from 'timeago.js';
 
-function Card({ navigation }) {
+function Card({ navigation, post }) {
+
+    const time = format(post.createdAt.split('T')[0] + " " + post.createdAt.split('T')[1])
+
     return (
         <View style={styles.container}>
+            <Line />
 
             {/**Header */}
             <View style={styles.headerContainer}>
                 <View style={styles.textAndIconContainer}>
                     <AntDesign name="user" size={16} />
-                    <Text style={styles.nameText}> Muhammed ALi balcı</Text>
+                    <Text style={styles.nameText}> {post.user.name} {post.user.lastName}</Text>
                 </View>
 
                 <View style={styles.textAndIconContainer}>
                     <AntDesign name="clockcircleo" size={16} />
-                    <Text style={styles.timeText}> 1 day ago</Text>
+                    <Text style={styles.timeText}> {time}</Text>
                 </View>
             </View>
 
-            <TouchableOpacity onPress={() => navigation.navigate('PostWebView')} >
-                <RNUrlPreview text={"https://elemental.medium.com/the-u-s-is-in-no-shape-for-thanksgiving-a1bd95e40565"} />
-            </TouchableOpacity>
+            {/** Title */}
+            {post.title && <Text style={styles.titleText}>{post.title}</Text>}
 
+            {/** Url Preview */}
+            <RNUrlPreview text={post.link} specialOnPress={() => navigation.navigate('Home', { screen: 'PostWebView' })} />
 
             {/** Footer */}
             <View style={styles.footer}>
 
                 <View style={styles.textAndIconContainer}>
-                    <AntDesign name="upcircleo" size={16} />
-                    <Text style={{}}> 151 Points</Text>
+                    {post.isPointed ? <AntDesign name="upcircle" size={20} />
+                        : <AntDesign name="upcircleo" size={20} />}
+                    <Text> {post.pointCount} Points</Text>
                 </View>
 
                 <View style={styles.textAndIconContainer}>
                     <AntDesign name="aliwangwang-o1" size={16} />
-                    <Text style={{}}> 32 Comments</Text>
+                    <Text> {post.commentCount} Comments</Text>
                 </View>
 
             </View>
 
-            <Line />
         </View>
     )
 }
@@ -56,6 +62,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         padding: 10,
         marginBottom: 15,
+        marginTop: 15,
     },
     textAndIconContainer: {
         flexDirection: 'row',
@@ -67,15 +74,17 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto-Medium'
     },
     titleText: {
-        marginLeft: 10,
-        color: '#21618C'
+        textAlign: 'center',
+        marginBottom: 10,
+        fontSize: heightPercentageToDP('2.5%'),
+        fontFamily: 'Roboto-Medium'
     },
     footer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        padding: 10,
+        paddingLeft: 10,
+        paddingRight: 10,
         marginTop: 15,
-        marginBottom: 5,
     },
 })
 

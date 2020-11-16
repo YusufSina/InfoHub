@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
         padding: 10,
     },
     title: {
-        fontSize: heightPercentageToDP('4%'),
-        fontFamily:'ArchitectsDaughter-Regular'
+        fontSize: heightPercentageToDP('3%'),
+        fontFamily:'Anton-Regular'
     },
 })
 
