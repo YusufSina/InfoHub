@@ -5,7 +5,7 @@ import * as Font from 'expo-font';
 import store from './src/store'
 import { Provider } from 'react-redux';
 import JwtDecode from 'jwt-decode';
-import {  logout } from './src/store/actions/authAction';
+import { logout } from './src/store/actions/authAction';
 import AsyncStorage from '@react-native-community/async-storage';
 import { AUTH_LOADING, AUTH_USER } from './src/store/types';
 
@@ -21,14 +21,14 @@ export default function App() {
     store.dispatch({ type: AUTH_LOADING, payload: true })
     try {
       const value = await AsyncStorage.getItem('token');
-      
+
       if (value !== null) {
         const decodeToken = JwtDecode(value);
 
         if (decodeToken.exp < dateNow.getDate()) {
           store.dispatch(logout());
         }
-        
+
         store.dispatch({
           type: AUTH_USER,
           payload: { id: decodeToken.sub }
@@ -44,14 +44,13 @@ export default function App() {
   };
 
   const [loaded] = Font.useFonts({
-    'ArchitectsDaughter-Regular': require('./src/assets/fonts/ArchitectsDaughter-Regular.ttf'),
     'Roboto-Medium': require('./src/assets/fonts/Roboto-Medium.ttf'),
+    'Anton-Regular': require('./src/assets/fonts/Anton-Regular.ttf'),
   });
 
   if (!loaded) {
-    return null;
+    return null
   }
-
 
   return (
     <Provider store={store}>
