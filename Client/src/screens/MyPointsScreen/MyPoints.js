@@ -56,8 +56,6 @@ export default function MyPoints({ navigation }) {
             <FlatList
                 data={myPoints}
                 renderItem={_renderItem}
-                ListFooterComponent={_footerCompoenent}
-                ListHeaderComponent={loading && _headerCompoenent}
                 onEndReached={onEndReached}
                 onEndReachedThreshold={1}
                 keyExtractor={(item, index) => index.toString()}

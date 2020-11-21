@@ -56,6 +56,16 @@ function Card({ navigation, post }) {
 const styles = StyleSheet.create({
     container: {
         padding: 10,
+        margin: 10,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
     },
     headerContainer: {
         flexDirection: 'row',
