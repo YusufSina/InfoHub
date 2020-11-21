@@ -22,12 +22,13 @@ export const getMyPoints = (pageNumber) => async dispatch => {
 export const getPosts = (pageNumber) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
     dispatch({ type: POST_LOADING, payload: true })
-    return Axios.get(URL + URL_POST + `posts?pageNumber=${pageNumber}&pageSize=20`, {
+    return Axios.get(URL + URL_POST + `/?pageNumber=${pageNumber}&pageSize=20`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
     })
         .then(res => {
+            console.log("POSTSSs")
             console.log(res)
             dispatch({ type: GET_POSTS, payload: res });
         }).catch(error => {
