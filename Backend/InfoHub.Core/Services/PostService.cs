@@ -28,7 +28,12 @@ namespace InfoHub.Core.Services
             var posts = await _postRepository.GetAllPostsAsync();
             return PagedList<Post>.ToPagedList(posts.AsQueryable(), paginationParameters.PageNumber, paginationParameters.PageSize);
         }
-       
+
+        public async Task<PagedList<Post>> GetAllPostsUserAsync(int userId, PaginationParameters paginationParameters)
+        {
+            var posts = await _postRepository.GetAllPostsOfUserAsync(userId);
+            return PagedList<Post>.ToPagedList(posts.AsQueryable(), paginationParameters.PageNumber, paginationParameters.PageSize);
+        }
         public Post GetPost(int id)
         {
             var post = _postRepository.GetPost(id);

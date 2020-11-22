@@ -42,6 +42,30 @@ namespace InfoHub.Infrastructure.Repositories
                     .Take(20)
                     .ToListAsync();
 
+        public async Task<List<Post>> GetAllPostsOfUserAsync(int userId) =>
+            await _context.Posts
+                    .Where(x => x.UserId == userId)
+                    .Select(x => new Post
+                    {
+                        Id = x.Id,
+                        Link = x.Link,
+                        Title = x.Title,
+                        PointCount = _context.UserPoints.Where(up => up.PostId == x.Id).Count(),
+                        User = x.User,
+                        CreatedAt = x.CreatedAt,
+                        CommentCount = _context.Comments.Where(c => c.PostId == x.Id).Count(),
+                        Categories = (from postCategory in _context.CategoryPosts
+                                      join category in _context.Categories on postCategory.CategoryId equals category.Id
+                                      where postCategory.PostId == x.Id
+                                      select new Category
+                                      {
+                                          Id = category.Id,
+                                          Name = category.Name
+                                      }).ToList()
+                    })
+                    .OrderByDescending(x => x.CreatedAt)
+                    .ToListAsync();
+
         public Post GetPost(int id) =>
             _context.Posts.Where(x => x.Id == id)
              .Select(x => new Post

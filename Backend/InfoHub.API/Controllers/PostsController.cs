@@ -4,6 +4,7 @@ using InfoHub.Core.Helpers;
 using InfoHub.Core.Interfaces;
 using InfoHub.Core.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,25 +21,55 @@ namespace InfoHub.API.Controllers
         {
             _postService = postService;
         }
+
         [HttpGet]
         public async Task<ActionResult> GetAllPosts([FromQuery] PaginationParameters paginationParameters)
         {
             var posts = await _postService.GetAllPostsAsync(paginationParameters);
+
             if (posts.Count == 0)
             {
                 return new NoContentResult();
             }
+
+            var metadata = new
+            {
+                posts.TotalCount,
+                posts.PageSize,
+                posts.CurrentPage,
+                posts.TotalPages,
+                posts.HasNext,
+                posts.HasPrevious
+            };
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metadata));
+
             return new OkObjectResult(posts);
         }
-        [HttpGet("{id}")]
-        public ActionResult GetPost([FromRoute] int id)
+
+        [HttpGet("myPoints")]
+        public async Task<ActionResult> GetAllPostsOfUser([FromQuery] PaginationParameters paginationParameters)
         {
-            if (string.IsNullOrEmpty(id.ToString()))
+            var userId = (int)HttpContext.Items["UserId"];
+
+            var posts = await _postService.GetAllPostsUserAsync(userId, paginationParameters);
+
+            if (posts.Count == 0)
             {
-                return BadRequest();
+                return new NoContentResult();
             }
-            var post = _postService.GetPost(id);
-            return new OkObjectResult(post);
+
+            var metadata = new
+            {
+                posts.TotalCount,
+                posts.PageSize,
+                posts.CurrentPage,
+                posts.TotalPages,
+                posts.HasNext,
+                posts.HasPrevious
+            };
+            Response.Headers.Add("Pagination", JsonConvert.SerializeObject(metadata));
+
+            return new OkObjectResult(posts);
         }
 
         [HttpPost]
