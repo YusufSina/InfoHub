@@ -15,10 +15,10 @@ export default function Posts({ navigation }) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        fetchMyPoints(1)
+        fetchPosts(1)
     }, [])
 
-    const fetchMyPoints = (pageNumber) => {
+    const fetchPosts = (pageNumber) => {
         dispatch(getPosts(pageNumber))
     }
 
@@ -36,7 +36,7 @@ export default function Posts({ navigation }) {
         setLoader(true)
         if (HasNext && pageNumber != CurrentPage) {
             setPageNumber(CurrentPage)
-            fetchMyPoints(CurrentPage + 1)
+            fetchPosts(CurrentPage + 1)
         }
         setTimeout(() => {
             setLoader(false)
@@ -55,8 +55,6 @@ export default function Posts({ navigation }) {
             <FlatList
             data={posts}
             renderItem={_renderItem}
-            ListFooterComponent={_footerCompoenent}
-            ListHeaderComponent={loading && _headerCompoenent}
             onEndReached={onEndReached}
             onEndReachedThreshold={1}
             keyExtractor={(item, index) => index.toString()}

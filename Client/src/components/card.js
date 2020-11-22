@@ -1,24 +1,26 @@
-import { AntDesign } from "@expo/vector-icons";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { heightPercentageToDP } from "react-native-responsive-screen";
-import RNUrlPreview from "react-native-url-preview";
+import { AntDesign } from '@expo/vector-icons'
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
+import { heightPercentageToDP } from 'react-native-responsive-screen'
+import RNUrlPreview from 'react-native-url-preview'
 import { Line } from './line'
-import { format } from 'timeago.js';
+import { format } from 'timeago.js'
 
 function Card({ navigation, post }) {
-
-    const time = format(post.createdAt.split('T')[0] + " " + post.createdAt.split('T')[1])
+    const time = format(
+        post.createdAt.split('T')[0] + ' ' + post.createdAt.split('T')[1]
+    )
 
     return (
         <View style={styles.container}>
-            <Line />
-
             {/**Header */}
             <View style={styles.headerContainer}>
                 <View style={styles.textAndIconContainer}>
                     <AntDesign name="user" size={16} />
-                    <Text style={styles.nameText}> {post.user.name} {post.user.lastName}</Text>
+                    <Text style={styles.nameText}>
+                        {' '}
+                        {post.user.name} {post.user.lastName}
+                    </Text>
                 </View>
 
                 <View style={styles.textAndIconContainer}>
@@ -31,14 +33,21 @@ function Card({ navigation, post }) {
             {post.title && <Text style={styles.titleText}>{post.title}</Text>}
 
             {/** Url Preview */}
-            <RNUrlPreview text={post.link} specialOnPress={() => navigation.navigate('Home', { screen: 'PostWebView' })} />
+            <RNUrlPreview
+                text={post.link}
+                specialOnPress={() =>
+                    navigation.navigate('Home', { screen: 'PostWebView' })
+                }
+            />
 
             {/** Footer */}
             <View style={styles.footer}>
-
                 <View style={styles.textAndIconContainer}>
-                    {post.isPointed ? <AntDesign name="upcircle" size={20} />
-                        : <AntDesign name="upcircleo" size={20} />}
+                    {post.isPointed ? (
+                        <AntDesign name="upcircle" size={20} />
+                    ) : (
+                        <AntDesign name="upcircleo" size={20} />
+                    )}
                     <Text> {post.pointCount} Points</Text>
                 </View>
 
@@ -46,9 +55,7 @@ function Card({ navigation, post }) {
                     <AntDesign name="aliwangwang-o1" size={16} />
                     <Text> {post.commentCount} Comments</Text>
                 </View>
-
             </View>
-
         </View>
     )
 }
@@ -57,15 +64,10 @@ const styles = StyleSheet.create({
     container: {
         padding: 10,
         margin: 10,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-
-        elevation: 3,
+        paddingTop: 0,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: 'gray'
     },
     headerContainer: {
         flexDirection: 'row',
@@ -77,17 +79,17 @@ const styles = StyleSheet.create({
     textAndIconContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     nameText: {
         fontSize: heightPercentageToDP('2.3%'),
-        fontFamily: 'Roboto-Medium'
+        fontFamily: 'Roboto-Medium',
     },
     titleText: {
         textAlign: 'center',
         marginBottom: 10,
         fontSize: heightPercentageToDP('2.5%'),
-        fontFamily: 'Roboto-Medium'
+        fontFamily: 'Roboto-Medium',
     },
     footer: {
         flexDirection: 'row',

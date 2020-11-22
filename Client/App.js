@@ -22,6 +22,8 @@ export default function App() {
     try {
       const value = await AsyncStorage.getItem('token');
 
+      console.log(value)
+
       if (value !== null) {
         const decodeToken = JwtDecode(value);
 
