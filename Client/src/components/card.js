@@ -10,7 +10,7 @@ function Card({ navigation, post }) {
     const time = format(
         post.createdAt.split('T')[0] + ' ' + post.createdAt.split('T')[1]
     )
-
+    
     return (
         <View style={styles.container}>
             {/**Header */}

@@ -45,11 +45,18 @@ export const addPost = (data) => async dispatch => {
     })
         .then(res => {
             dispatch({ type: POST_LOADING, payload: false });
+            return true;
         }).catch(error => {
             console.log(error);
+            return false;
         }).finally(() => dispatch({ type: POST_LOADING, payload: false }))
 
 };
+
+export const deneme = x => async dispatch => {
+    console.log(dispatch)
+    return x;
+}
 
 
 
