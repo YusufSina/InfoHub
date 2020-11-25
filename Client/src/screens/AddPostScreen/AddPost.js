@@ -13,9 +13,9 @@ import FlashMessage from "react-native-flash-message";
 import { showMessage, hideMessage } from "react-native-flash-message";
 
 import TopBar from '../../components/topbar'
-import { addPost } from '../../store/actions/postAction'
+import { addPost, getPosts } from '../../store/actions/postAction'
 
-export default function AddPost() {
+export default function AddPost({ navigation }) {
     const [valueHeader, setValueHeader] = React.useState('')
     const [valueLink, setValueLink] = React.useState('')
     const [loader, setLoader] = useState(false)
@@ -27,16 +27,21 @@ export default function AddPost() {
 
         setLoader(false)
         if (isSucceed) {
+            setValueHeader('')
+            setValueLink('')
+
+            navigation.navigate("Home")
+
             showMessage({
                 message: "Başarılı!",
                 description: "İşleminiz başarıyla gerçekleşti.",
                 type: "success",
               });
 
-            setValueHeader('')
-            setValueLink('')
             return;
         }
+
+
         showMessage({
             message: "Hata!",
             description: "Bir hata meydana geldi.",

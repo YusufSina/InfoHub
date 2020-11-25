@@ -52,12 +52,3 @@ export const addPost = (data) => async dispatch => {
         }).finally(() => dispatch({ type: POST_LOADING, payload: false }))
 
 };
-
-export const deneme = x => async dispatch => {
-    console.log(dispatch)
-    return x;
-}
-
-
-
-
