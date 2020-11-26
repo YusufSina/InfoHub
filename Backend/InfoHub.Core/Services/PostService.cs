@@ -12,20 +12,22 @@ namespace InfoHub.Core.Services
     {
         private readonly IPostRepository _postRepository;
         private readonly IRepository<UserPoint> _userPointRepository;
+        private readonly IRepository<CategoryPost> _categoryPostrepository; 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public PostService(IPostRepository postRepository, IRepository<UserPoint> userPointRepository, IUnitOfWork unitOfWork, IMapper mapper)
+        public PostService(IPostRepository postRepository, IRepository<UserPoint> userPointRepository, IUnitOfWork unitOfWork, IMapper mapper, IRepository<CategoryPost> categoryPostrepository = null)
         {
             _postRepository = postRepository;
             _userPointRepository = userPointRepository;
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _categoryPostrepository = categoryPostrepository;
         }
-        
-        public async Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters)
+
+        public async Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters, int categoryId)
         {
-            var posts = await _postRepository.GetAllPostsAsync();
+            var posts = await _postRepository.GetAllPostsAsync(categoryId);
             return PagedList<Post>.ToPagedList(posts.AsQueryable(), paginationParameters.PageNumber, paginationParameters.PageSize);
         }
 
@@ -45,6 +47,11 @@ namespace InfoHub.Core.Services
             var postMap = _mapper.Map<Post>(post);
             _postRepository.Add(postMap);
             _unitOfWork.Complete();
+
+            var categoryPost = new CategoryPost { CategoryId = post.CategoryId, PostId = postMap.Id };
+            _categoryPostrepository.Add(categoryPost);
+            _unitOfWork.Complete();
+
             return GetPost(postMap.Id);
         }
 

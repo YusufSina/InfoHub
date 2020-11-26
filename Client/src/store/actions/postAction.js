@@ -1,11 +1,11 @@
-import { GET_MY_POINTS, POST_LOADING, GET_POSTS, ADD_POST } from "../types";
+import { GET_MY_POINTS, GET_POSTS, ADD_POST, POST_ERROR, POST_LOADING } from "../types";
 import { URL, URL_POST } from "../apiUrl";
 import Axios from "axios";
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const getMyPoints = (pageNumber) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
-    dispatch({ type: POST_LOADING, payload: true })
+    dispatch({ type: POST_LOADING })
     return Axios.get(URL + URL_POST + `myPoints?pageNumber=${pageNumber}&pageSize=20`, {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -14,15 +14,14 @@ export const getMyPoints = (pageNumber) => async dispatch => {
         .then(res => {
             dispatch({ type: GET_MY_POINTS, payload: res });
         }).catch(error => {
-            //console.log(error.response);
-        }).finally(() => dispatch({ type: POST_LOADING, payload: false }))
-
+            dispatch({ type: POST_ERROR });
+        })
 };
 
-export const getPosts = (pageNumber) => async dispatch => {
+export const getPosts = (pageNumber, categoryNumber) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
-    dispatch({ type: POST_LOADING, payload: true })
-    return Axios.get(URL + URL_POST + `?pageNumber=${pageNumber}&pageSize=20`, {
+    dispatch({ type: POST_LOADING })
+    return Axios.get(URL + URL_POST + `?pageNumber=${pageNumber}&pageSize=20&categoryId=${categoryNumber}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -30,24 +29,25 @@ export const getPosts = (pageNumber) => async dispatch => {
         .then(res => {
             dispatch({ type: GET_POSTS, payload: res });
         }).catch(error => {
-            console.log(error);
-        }).finally(() => dispatch({ type: POST_LOADING, payload: false }))
+            dispatch({ type: POST_ERROR });
+        })
 
 };
 
-export const addPost = (data) => async dispatch => {
+// categoryState = Eğer eklenen kategori ile şu anda açık olan kategori aynı ise o zaman reducer'a ekle 
+export const addPost = (data, categoryState) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
-    dispatch({ type: POST_LOADING, payload: true })
+    dispatch({ type: POST_LOADING })
     return Axios.post(URL + URL_POST, data, {
         headers: {
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}asd`
         }
     })
         .then(res => {
-            dispatch({ type: ADD_POST, payload: res.data });
+            categoryState && dispatch({ type: ADD_POST, payload: res.data });
         }).catch(error => {
-            console.log(error);
-        }).finally(() => dispatch({ type: POST_LOADING, payload: false }))
+            dispatch({ type: POST_ERROR });
+        })
 
 };
 

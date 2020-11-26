@@ -5,12 +5,12 @@ import WebView from 'react-native-webview'
 import { Line } from '../../components/line'
 import TopBar from '../../components/topbar'
 
-export default function PostWebView({navigation}) {
+export default function PostWebView({ navigation, route: { params: url } }) {
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-            <TopBar title="Header" leftIcon="left"  leftIconClick={()=>navigation.goBack()} />
-            <Line/>
-            <WebView source={{ uri: 'https://expo.io' }}  />
+            <TopBar title="Header" leftIcon="left" leftIconClick={() => navigation.goBack()} />
+            <Line />
+            <WebView source={{ uri: url.url }} />
         </SafeAreaView>
     )
 }

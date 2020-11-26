@@ -1,66 +1,69 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {
-    Text,
     TextInput,
     View,
     StyleSheet,
-    Button,
     ActivityIndicator,
 } from 'react-native'
-import FlashMessage from "react-native-flash-message";
-import { showMessage, hideMessage } from "react-native-flash-message";
+import { showMessage } from "react-native-flash-message";
 
 import TopBar from '../../components/topbar'
-import { addPost, getPosts } from '../../store/actions/postAction'
+import { addPost } from '../../store/actions/postAction'
+import { Button } from 'react-native-elements';
+import { AntDesign } from '@expo/vector-icons';
+import { Picker } from '@react-native-picker/picker';
 
 export default function AddPost({ navigation }) {
     const [valueHeader, setValueHeader] = React.useState('')
     const [valueLink, setValueLink] = React.useState('')
-    const [loader, setLoader] = useState(false)
+    const [selectedCategoryNumber, setSelectedCategoryNumber] = React.useState(1)
+    const [submitButton, setSubmitButton] = React.useState(false)
+    const [loader, setLoader] = React.useState(false)
+
     const dispatch = useDispatch()
+
+    const { categories, categoryNumber, error } = useSelector(state => state.post)
+
+    useEffect(() => {
+        if (submitButton) {
+            if (!loader && !error) {
+                showMessage({
+                    message: "Successfully!",
+                    description: "Post added",
+                    type: "success",
+                });
+                setValueHeader('')
+                setValueLink('')
+
+            } else {
+                showMessage({
+                    message: "Error!",
+                    description: "An unexpected error occurred",
+                    type: "danger",
+                });
+            }
+            navigation.navigate('Home', { screen: 'Posts' })
+            setSubmitButton(false)
+        }
+    }, [submitButton])
 
     const sendPost = async () => {
         setLoader(true)
-        let isSucceed = await dispatch(addPost({ title: valueHeader, link: valueLink, userId: 10 }))
-
-        setLoader(false)
-        if (isSucceed) {
-            setValueHeader('')
-            setValueLink('')
-
-            navigation.navigate("Home")
-
-            showMessage({
-                message: "Başarılı!",
-                description: "İşleminiz başarıyla gerçekleşti.",
-                type: "success",
-              });
-
-            return;
+        setSubmitButton(true)
+        const data = {
+            title: valueHeader != '' ? valueHeader : null,
+            link: valueLink,
+            categoryId: selectedCategoryNumber
         }
-
-
-        showMessage({
-            message: "Hata!",
-            description: "Bir hata meydana geldi.",
-            type: "danger",
-          });
+        dispatch(addPost(data, categoryNumber == selectedCategoryNumber))
+        setLoader(false)
     }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <TopBar title="Share Wisely" />
-            <View style={styles.ContainerOfInput}>
-                <TextInput
-                    style={styles.Input}
-                    placeholder="Enter header"
-                    disabled={loader}
-                    onChangeText={(text) => setValueHeader(text)}
-                    value={valueHeader}
-                ></TextInput>
-            </View>
             <View style={styles.ContainerOfInput}>
                 <TextInput
                     style={styles.Input}
@@ -71,14 +74,43 @@ export default function AddPost({ navigation }) {
                 ></TextInput>
             </View>
             <View style={styles.ContainerOfInput}>
-                <Button title="Share" disabled={!valueHeader || !valueLink || loader} onPress={() => sendPost()} />
+                <TextInput
+                    style={styles.Input}
+                    placeholder="Enter header (Optional)"
+                    disabled={loader}
+                    onChangeText={(text) => setValueHeader(text)}
+                    value={valueHeader}
+                ></TextInput>
+            </View>
+            <View style={styles.ContainerOfInput}>
+                <Picker
+                    selectedValue={selectedCategoryNumber}
+                    onValueChange={(itemValue) => setSelectedCategoryNumber(itemValue)}
+                >
+                    {categories.map(c => (<Picker.Item key={c.id} label={c.name} value={c.id} />))}
+                </Picker>
+            </View>
+
+            <View style={styles.ContainerOfInput}>
+                <Button
+                    title="Share"
+                    icon={
+                        <AntDesign
+                            name="sharealt"
+                            size={15}
+                            color={!valueLink || loader ? 'gray' : 'white'}
+                        />
+                    }
+                    disabled={!valueLink || loader}
+                    onPress={() => sendPost()}
+                    titleStyle={{ fontFamily: 'Roboto-Medium', marginLeft: 5 }}
+                    buttonStyle={{ backgroundColor: '#21618C', padding: 10, borderRadius: 10 }} />
             </View>
             {loader && (
                 <View style={styles.loadingScreen}>
                     <ActivityIndicator size="large" color="#00ff00" />
                 </View>
             )}
-            <FlashMessage position="top" />
         </SafeAreaView>
     )
 }
@@ -92,7 +124,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         borderWidth: 1,
         borderColor: 'gray',
-        paddingHorizontal: 5,
+        padding: 10
     },
     loadingScreen: {
         backgroundColor: 'gray',

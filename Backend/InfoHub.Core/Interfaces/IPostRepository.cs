@@ -8,7 +8,7 @@ namespace InfoHub.Core.Interfaces
 {
     public interface IPostRepository : IRepository<Post>
     {
-        Task<List<Post>> GetAllPostsAsync();
+        Task<List<Post>> GetAllPostsAsync(int categoryId);
 
         Task<List<Post>> GetAllPostsOfUserAsync(int userId);
         Post GetPost(int id);

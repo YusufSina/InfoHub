@@ -11,20 +11,20 @@ import Card from '../../components/card'
 import TopBar from '../../components/topbar'
 import { useDispatch, useSelector } from 'react-redux'
 import { getPosts } from '../../store/actions/postAction'
+import Categories from './Categories';
 
 export default function Posts({ navigation }) {
     const [loader, setLoader] = useState(false)
-    const [pageNumber, setPageNumber] = useState(0)
-    const { posts, loading, pagination } = useSelector(state => state.post)
-    console.log(posts);
+    const [pageNumber, setPageNumber] = useState(1)
+    const { posts, loading, pagination, categoryNumber } = useSelector(state => state.post)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        fetchPosts(1)
-    }, [])
+        fetchPosts(pageNumber)
+    }, [categoryNumber])
 
     const fetchPosts = (pageNumber) => {
-        dispatch(getPosts(pageNumber))
+        dispatch(getPosts(pageNumber, categoryNumber))
     }
 
     const _renderItem = ({ item }) => (
@@ -33,7 +33,7 @@ export default function Posts({ navigation }) {
 
     const _headerCompoenent = () => {
         return (
-            <ActivityIndicator
+            loading && <ActivityIndicator
                 size="small"
                 color="gray"
                 style={{ paddingTop: 15 }}
@@ -64,6 +64,7 @@ export default function Posts({ navigation }) {
         }
         return <View style={{ paddingVertical: 20 }} />
     }
+
     return (
         <SafeAreaView
             style={{
@@ -73,10 +74,13 @@ export default function Posts({ navigation }) {
             }}
         >
             <TopBar title="Stream" rightIcon="setting" />
+
+            <Categories />
             <FlatList
                 data={posts}
                 renderItem={_renderItem}
                 onEndReached={onEndReached}
+                ListHeaderComponent={_headerCompoenent}
                 onEndReachedThreshold={1}
                 keyExtractor={(item, index) => index.toString()}
             />

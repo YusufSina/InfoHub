@@ -10,5 +10,6 @@ namespace InfoHub.Core.Dtos
         public string Title { get; set; }
         public string Link { get; set; }
         public int UserId { get; set; }
+        public int CategoryId { get; set; }
     }
 }

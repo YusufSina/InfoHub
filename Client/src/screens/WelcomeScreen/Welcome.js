@@ -56,7 +56,6 @@ export default function Welcome() {
 
         } catch (e) {
             setLoading(false)
-            console.log(e.response);
             return { error: true };
         }
     }

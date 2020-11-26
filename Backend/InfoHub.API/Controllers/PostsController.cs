@@ -23,9 +23,9 @@ namespace InfoHub.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllPosts([FromQuery] PaginationParameters paginationParameters)
+        public async Task<ActionResult> GetAllPosts([FromQuery] PaginationParameters paginationParameters,[FromQuery] int categoryId=1)
         {
-            var posts = await _postService.GetAllPostsAsync(paginationParameters);
+            var posts = await _postService.GetAllPostsAsync(paginationParameters, categoryId);
 
             if (posts.Count == 0)
             {
@@ -75,6 +75,9 @@ namespace InfoHub.API.Controllers
         [HttpPost]
         public ActionResult AddPost([FromBody] PostDto post)
         {
+            var userId = (int)HttpContext.Items["UserId"];
+            post.UserId = userId;
+
             var addedPost = _postService.AddPost(post);
             return new OkObjectResult(addedPost);
         }

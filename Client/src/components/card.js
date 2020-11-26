@@ -4,15 +4,16 @@ import { StyleSheet, Text, View } from 'react-native'
 import { heightPercentageToDP } from 'react-native-responsive-screen'
 import RNUrlPreview from 'react-native-url-preview'
 import { format } from 'timeago.js'
+import { Card as CardView } from 'react-native-elements'
 
 function Card({ navigation, post }) {
     const time = format(
         post.createdAt.split('T')[0] + ' ' + post.createdAt.split('T')[1]
     )
-    
+
     return (
-        <View style={styles.container}>
-            
+        <CardView >
+
             {/**Header */}
             <View style={styles.headerContainer}>
                 <View style={styles.textAndIconContainer}>
@@ -36,7 +37,7 @@ function Card({ navigation, post }) {
             <RNUrlPreview
                 text={post.link}
                 specialOnPress={() =>
-                    navigation.navigate('Home', { screen: 'PostWebView' })
+                    navigation.navigate('Home', { screen: 'PostWebView', params: { url: post.link } })
                 }
             />
 
@@ -46,8 +47,8 @@ function Card({ navigation, post }) {
                     {post.isPointed ? (
                         <AntDesign name="upcircle" size={20} />
                     ) : (
-                        <AntDesign name="upcircleo" size={20} />
-                    )}
+                            <AntDesign name="upcircleo" size={20} />
+                        )}
                     <Text> {post.pointCount} Points</Text>
                 </View>
 
@@ -56,19 +57,11 @@ function Card({ navigation, post }) {
                     <Text> {post.commentCount} Comments</Text>
                 </View>
             </View>
-        </View>
+        </CardView>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 10,
-        margin: 10,
-        paddingTop: 0,
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: 'grey'
-    },
     headerContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',

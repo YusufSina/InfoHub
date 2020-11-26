@@ -2,7 +2,7 @@
 
 namespace InfoHub.Core.Models
 {
-    [Table("Category")]
+   [Table("Category")]
    public class Category : BaseEntity
     {
         public string Name { get; set; }

@@ -10,7 +10,7 @@ namespace InfoHub.Core.Interfaces
 {
     public interface IPostService
     {
-        Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters);
+        Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters,int categoryId);
 
         Task<PagedList<Post>> GetAllPostsUserAsync(int userId, PaginationParameters paginationParameters);
 

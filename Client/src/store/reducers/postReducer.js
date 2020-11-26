@@ -1,37 +1,60 @@
-import { GET_MY_POINTS, POST_LOADING, GET_POSTS, ADD_POST } from "../types";
+import { GET_MY_POINTS, POST_LOADING, GET_POSTS, ADD_POST, GET_CATEGORIES, POST_ERROR, SET_CATEGORY_NUMBER } from "../types";
 
 const initialState = {
     posts: [],
     myPoints: [],
+    categories: [],
+    categoryNumber: 1,
     pagination: {},
     loading: false,
+    error: null
 };
 
 export default (state = initialState, action) => {
     const { payload } = action
     switch (action.type) {
         case GET_POSTS:
+            const pagination = JSON.parse(payload.headers.pagination)
             return {
                 ...state,
-                posts: payload.headers.pagination.CurrentPage == 1 ? [...payload.data] : [...state.posts, ...payload.data],
-                pagination: JSON.parse(payload.headers.pagination)
+                posts: pagination.CurrentPage == 1 ? [...payload.data] : [...state.posts, ...payload.data],
+                pagination,
+                loading: false
             };
         case GET_MY_POINTS:
             return {
                 ...state,
                 myPoints: payload.headers.pagination.CurrentPage == 1 ? [...payload.data] : [...state.myPoints, ...payload.data],
-                pagination: JSON.parse(payload.headers.pagination)
+                pagination: JSON.parse(payload.headers.pagination),
+                loading: false
             };
-        case ADD_POST:
-            console.log(payload);
+        case GET_CATEGORIES:
             return {
                 ...state,
-                posts:[payload].concat(state.posts)
+                categories: [...payload]
+            };
+        case SET_CATEGORY_NUMBER:
+            return {
+                ...state,
+                categoryNumber: payload
+            };
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [payload].concat(state.posts),
+                loading: false,
+                error: null
             };
         case POST_LOADING:
             return {
                 ...state,
-                loading: payload
+                loading: true
+            };
+        case POST_ERROR:
+            return {
+                ...state,
+                error: true,
+                loading: false
             };
         default:
             return state;
