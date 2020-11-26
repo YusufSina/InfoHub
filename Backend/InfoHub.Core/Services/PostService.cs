@@ -45,7 +45,7 @@ namespace InfoHub.Core.Services
             var postMap = _mapper.Map<Post>(post);
             _postRepository.Add(postMap);
             _unitOfWork.Complete();
-            return postMap;
+            return GetPost(postMap.Id);
         }
 
         public void DeletePost(int postId)

@@ -11,7 +11,7 @@ export default function Posts({ navigation }) {
     const [loader, setLoader] = useState(false)
     const [pageNumber, setPageNumber] = useState(0)
     const { posts, loading, pagination } = useSelector(state => state.post)
-    
+    console.log(posts);
     const dispatch = useDispatch()
 
     useEffect(() => {

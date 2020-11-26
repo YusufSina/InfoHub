@@ -12,7 +12,7 @@ export default function AddPost() {
     const dispatch = useDispatch()
 
     const sendPost = () => {
-        dispatch(addPost({title: valueHeader, link: valueLink, userId: 10}))
+        dispatch(addPost({ title: valueHeader, link: valueLink, userId: 10 }))
     }
 
     return (

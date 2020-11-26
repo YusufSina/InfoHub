@@ -3,7 +3,6 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { heightPercentageToDP } from 'react-native-responsive-screen'
 import RNUrlPreview from 'react-native-url-preview'
-import { Line } from './line'
 import { format } from 'timeago.js'
 
 function Card({ navigation, post }) {
@@ -13,6 +12,7 @@ function Card({ navigation, post }) {
 
     return (
         <View style={styles.container}>
+            
             {/**Header */}
             <View style={styles.headerContainer}>
                 <View style={styles.textAndIconContainer}>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         paddingTop: 0,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: 'gray'
+        borderColor: 'grey'
     },
     headerContainer: {
         flexDirection: 'row',

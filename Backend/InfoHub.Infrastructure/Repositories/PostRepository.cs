@@ -38,7 +38,7 @@ namespace InfoHub.Infrastructure.Repositories
                                           Name = category.Name
                                       }).ToList()
                     })
-                    .OrderByDescending(x => x.PointCount)
+                    .OrderByDescending(x => x.CreatedAt)
                     .Take(20)
                     .ToListAsync();
 
