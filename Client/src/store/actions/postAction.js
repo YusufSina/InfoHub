@@ -38,7 +38,6 @@ export const getPosts = (pageNumber) => async dispatch => {
 export const addPost = (data) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
     dispatch({ type: POST_LOADING, payload: true })
-    console.log(data);
     return Axios.post(URL + URL_POST, data, {
         headers: {
             'Authorization': `Bearer ${token}`
