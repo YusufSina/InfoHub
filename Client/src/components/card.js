@@ -5,6 +5,7 @@ import { heightPercentageToDP } from 'react-native-responsive-screen'
 import RNUrlPreview from 'react-native-url-preview'
 import { format } from 'timeago.js'
 import { Card as CardView } from 'react-native-elements'
+import PointButton from './pointButton'
 
 function Card({ navigation, post }) {
     const time = format(
@@ -43,15 +44,7 @@ function Card({ navigation, post }) {
 
             {/** Footer */}
             <View style={styles.footer}>
-                <View style={styles.textAndIconContainer}>
-                    {post.isPointed ? (
-                        <AntDesign name="upcircle" size={20} />
-                    ) : (
-                            <AntDesign name="upcircleo" size={20} />
-                        )}
-                    <Text> {post.pointCount} Points</Text>
-                </View>
-
+                <PointButton post={post}/>
                 <View style={styles.textAndIconContainer}>
                     <AntDesign name="aliwangwang-o1" size={16} />
                     <Text> {post.commentCount} Comments</Text>
