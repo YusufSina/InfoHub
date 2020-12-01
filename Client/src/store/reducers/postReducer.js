@@ -86,17 +86,24 @@ export default (state = initialState, action) => {
                 error: true
             }
         case ADD_POINT:
-            var updatedPosts = state.posts.map(x => x.id == payload ? (++x.pointCount && x) : x)
+            // var updatedPosts = state.posts.map(x => x.id == payload ? (++x.pointCount && x) : x)
+            var updatedPost = state.posts.find(x => x.id === payload)
+            updatedPost.pointCount++;
+
             return {
                 ...state,
-                posts: updatedPosts,
+                posts: state.posts.map(x => x.id == payload ? (updatedPost) : x),
+                myPoints: [...state.myPoints, updatedPost],
                 loading: false,
             }
         case REMOVE_POINT:
-            var updatedPosts = state.posts.map(x => x.id == payload ? (x.pointCount-- && x) : x)
+            var updatedPost = state.posts.find(x => x.id === payload)
+            updatedPost.pointCount--;
+
             return {
                 ...state,
-                posts: updatedPosts,
+                posts: state.posts.map(x => x.id == payload ? (updatedPost) : x),
+                myPoints: state.myPoints.filter(x => x.id !== payload),
                 loading: false,
             }
 

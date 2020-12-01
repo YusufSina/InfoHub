@@ -62,7 +62,6 @@ export const addPoint = (data) => async dispatch => {
     })
         .then(res => {
             dispatch({ type: ADD_POINT, payload: data });
-            dispatch(getMyPoits(1))
         }).catch(error => {
             console.log(error)
             dispatch({ type: POINT_ERROR });
@@ -81,7 +80,6 @@ export const removePoint = (data) => async dispatch => {
     })
         .then(res => {
             dispatch({ type: REMOVE_POINT, payload: data });
-            dispatch(getMyPoits(1))
         }).catch(error => {
             console.log(error)
             dispatch({ type: POINT_ERROR });
