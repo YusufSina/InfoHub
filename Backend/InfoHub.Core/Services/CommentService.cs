@@ -28,12 +28,12 @@ namespace InfoHub.Core.Services
             var comments = await _commentRepository.GetAllCommentsByPostIdAsync(postId);
             return PagedList<Comment>.ToPagedList(comments.AsQueryable(), paginationParameters.PageNumber, paginationParameters.PageSize);
         }
-        public Comment AddComment(CommentDto comment)
+        public  Comment AddComment(CommentDto comment)
         {
             var commentMap = _mapper.Map<Comment>(comment);
             _commentRepository.Add(commentMap);
             _unitOfWork.Complete();
-            return commentMap;
+            return _commentRepository.GetComment(commentMap.Id);
         }
         public void DeleteComment(int commentId)
         {

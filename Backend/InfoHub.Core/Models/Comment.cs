@@ -18,6 +18,6 @@ namespace InfoHub.Core.Models
         [ForeignKey("PostId")]
         public Post Post { get; set; }
         public int CommentId { get; set; }
-        public List<Comment> Relies { get; set; }
+        public List<Comment> Replies { get; set; }
     }
 }

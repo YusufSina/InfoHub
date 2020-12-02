@@ -18,6 +18,9 @@ namespace InfoHub.Infrastructure.Repositories
             _context = context;
         }
 
+        public Comment GetComment(int id) =>
+             _context.Comments.Include(x => x.User).Where(x=>x.Id == id).FirstOrDefault();
+
         public async Task<List<Comment>> GetAllCommentsByPostIdAsync(int postId) =>
              await _context.Comments
                     .Where(x => x.PostId == postId && x.CommentId == -1)
@@ -25,12 +28,13 @@ namespace InfoHub.Infrastructure.Repositories
                     {
                         Id = x.Id,
                         Content = x.Content,
-                        PostId = x.Id,
+                        PostId = x.PostId,
                         CreatedAt = x.CreatedAt,
+                        CommentId = x.CommentId,
                         User = x.User,
-                        Relies = _context.Comments.Where(c => c.CommentId == x.Id).ToList()
+                        Replies = _context.Comments.Where(c => c.CommentId == x.Id).Take(10).OrderByDescending(a => a.CreatedAt).ToList()
                     })
-                    .OrderByDescending(x=>x.CreatedAt)
+                    .OrderByDescending(x => x.CreatedAt)
                     .ToListAsync();
 
 
