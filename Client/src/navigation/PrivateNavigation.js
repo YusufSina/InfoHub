@@ -7,15 +7,28 @@ import { AntDesign } from '@expo/vector-icons'
 import AddPost from '../screens/AddPostScreen/AddPost';
 import MyPoints from '../screens/MyPointsScreen/MyPoints';
 import PostWebView from '../screens/HomeScreen/PostWebView';
+import Comments from '../screens/HomeScreen/Comments';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const HomeStack = createStackNavigator();
 
-function HomeStackScreen() {
+function HomeStackScreen({navigation, route }) {
+    
+    const routeName = getFocusedRouteNameFromRoute(route)
+    React.useEffect(() => {
+        if (routeName == "PostWebView" || routeName == "Comments") {
+            navigation.setOptions({ tabBarVisible: false });
+        }
+        else{
+            navigation.setOptions({ tabBarVisible: true });
+        }
+    }, [route])
+
     return (
         <HomeStack.Navigator headerMode="none">
             <HomeStack.Screen name="Posts" component={Posts} />
             <HomeStack.Screen name="PostWebView" component={PostWebView} />
-            {/*<HomeStack.Screen name="PostDetail" component={ } />*/}
+            <HomeStack.Screen name="Comments" component={Comments} />
         </HomeStack.Navigator>
     );
 }
@@ -36,7 +49,6 @@ function MyPointsStackScreen() {
     return (
         <MyPointsStack.Navigator headerMode="none">
             <MyPointsStack.Screen name="MyPoints" component={MyPoints} />
-            {/*<MyPointsStack.Screen name="PostDetail" component={ } />*/}
         </MyPointsStack.Navigator>
     );
 }

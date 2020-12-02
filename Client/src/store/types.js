@@ -7,6 +7,8 @@ export const GET_MY_POINTS = "GET_MY_POINTS";
 export const ADD_POST = "ADD_POST";
 export const POST_LOADING = "POST_LOADING";
 export const POST_ERROR = "POST_ERROR";
+export const INCREASE_COMMENTS = "INCREASE_COMMENTS";
+export const ADD_REPLY = "ADD_REPLY";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const SET_CATEGORY_NUMBER = "SET_CATEGORY_NUMBER";

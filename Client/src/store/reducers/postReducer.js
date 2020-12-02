@@ -10,6 +10,8 @@ import {
     REMOVE_POINT,
     POINT_ERROR,
     POINT_LOADING,
+    INCREASE_COMMENTS,
+    ADD_REPLY,
 } from '../types'
 
 const initialState = {
@@ -106,7 +108,17 @@ export default (state = initialState, action) => {
                 myPoints: state.myPoints.filter(x => x.id !== payload),
                 loading: false,
             }
-
+        case INCREASE_COMMENTS:
+            return {
+                ...state,
+                posts: state.posts.map(
+                    post => post.id === payload ? { ...post, commentCount: post.commentCount += 1 }
+                        : post),
+                myPoints: state.myPoints.map(
+                    post => post.id === payload ? { ...post, commentCount: post.commentCount += 1 }
+                        : post),
+                loading: false
+            }
         default:
             return state
     }

@@ -1,17 +1,16 @@
 import { AntDesign } from '@expo/vector-icons'
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { heightPercentageToDP } from 'react-native-responsive-screen'
 import RNUrlPreview from 'react-native-url-preview'
 import { format } from 'timeago.js'
 import { Card as CardView } from 'react-native-elements'
 import PointButton from './pointButton'
 
-function Card({ navigation, post }) {
+function Card({ navigation, post, sheetRef }) {
     const time = format(
         post.createdAt.split('T')[0] + ' ' + post.createdAt.split('T')[1]
     )
-
     return (
         <CardView >
 
@@ -44,11 +43,11 @@ function Card({ navigation, post }) {
 
             {/** Footer */}
             <View style={styles.footer}>
-                <PointButton post={post}/>
-                <View style={styles.textAndIconContainer}>
+                <PointButton post={post} />
+                <TouchableOpacity style={styles.textAndIconContainer} onPress={() => navigation.navigate('Home', { screen: 'Comments', params: { postId: post.id } })} >
                     <AntDesign name="aliwangwang-o1" size={16} />
                     <Text> {post.commentCount} Comments</Text>
-                </View>
+                </TouchableOpacity>
             </View>
         </CardView>
     )
