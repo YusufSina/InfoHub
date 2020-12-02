@@ -54,7 +54,6 @@ export const addPost = (data, categoryState) => async dispatch => {
 export const addPoint = (data) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
 
-    dispatch({ type: POINT_LOADING })
     return Axios.post(URL + URL_POST + UP_VOTE + data,  null, {
         headers: {
             'Authorization': `Bearer ${token}`
@@ -72,7 +71,6 @@ export const addPoint = (data) => async dispatch => {
 export const removePoint = (data) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
 
-    dispatch({ type: POINT_LOADING })
     return Axios.post(URL + URL_POST + DOWN_VOTE + data,  null, {
         headers: {
             'Authorization': `Bearer ${token}`

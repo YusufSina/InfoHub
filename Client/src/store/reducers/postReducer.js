@@ -8,8 +8,6 @@ import {
     SET_CATEGORY_NUMBER,
     ADD_POINT,
     REMOVE_POINT,
-    POINT_ERROR,
-    POINT_LOADING,
 } from '../types'
 
 const initialState = {
@@ -73,17 +71,6 @@ export default (state = initialState, action) => {
                 ...state,
                 error: true,
                 loading: false,
-            }
-        case POINT_LOADING:
-            return {
-                ...state,
-                loading: true,
-            }
-        case POINT_ERROR:
-            return {
-                ...state,
-                loading: false,
-                error: true
             }
         case ADD_POINT:
             // var updatedPosts = state.posts.map(x => x.id == payload ? (++x.pointCount && x) : x)
