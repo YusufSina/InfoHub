@@ -76,17 +76,6 @@ export default (state = initialState, action) => {
                 error: true,
                 loading: false,
             }
-        case POINT_LOADING:
-            return {
-                ...state,
-                loading: true,
-            }
-        case POINT_ERROR:
-            return {
-                ...state,
-                loading: false,
-                error: true
-            }
         case ADD_POINT:
             // var updatedPosts = state.posts.map(x => x.id == payload ? (++x.pointCount && x) : x)
             var updatedPost = state.posts.find(x => x.id === payload)

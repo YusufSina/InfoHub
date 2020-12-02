@@ -15,5 +15,3 @@ export const SET_CATEGORY_NUMBER = "SET_CATEGORY_NUMBER";
 
 export const ADD_POINT = "ADD_POINT";
 export const REMOVE_POINT = "REMOVE_POINT";
-export const POINT_LOADING = "POINT_LOADGIN";
-export const POINT_ERROR = "POINT_ERROR";
