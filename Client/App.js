@@ -46,6 +46,7 @@ export default function App() {
   const [loaded] = Font.useFonts({
     'Roboto-Medium': require('./src/assets/fonts/Roboto-Medium.ttf'),
     'Anton-Regular': require('./src/assets/fonts/Anton-Regular.ttf'),
+    'ArchitectsDaughter-Regular': require('./src/assets/fonts/ArchitectsDaughter-Regular.ttf'),
   });
 
   if (!loaded) {

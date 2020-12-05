@@ -15,12 +15,13 @@ export default function CommentItem({ comment, postId, comments, setComments }) 
 
     const dispatch = useDispatch()
     const time = format(
-         comment.createdAt.split('T')[0] + ' ' + comment.createdAt.split('T')[1]
+        comment.createdAt.split('T')[0] + ' ' + comment.createdAt.split('T')[1]
     )
 
     const [addLoadingComment, setAddLoadingComment] = useState(false)
     const [disabledAddCommentButton, setDisabledAddCommentButton] = useState(true)
     const [reply, setReply] = useState('')
+    const [reliesNumber, setReliesNumber] = useState(5)
 
     const onChange = (text) => {
         setReply(text)
@@ -54,7 +55,7 @@ export default function CommentItem({ comment, postId, comments, setComments }) 
 
     const replies = (
         comment.replies.length != 0 && <View>
-            {comment.replies.map(r => (
+            {comment.replies.slice(0, reliesNumber).map(r => (
                 <Card key={r.id} >
                     <View style={[styles.topContainer]}>
                         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -72,7 +73,7 @@ export default function CommentItem({ comment, postId, comments, setComments }) 
                     </View>
                 </Card>
             ))}
-            <Text style={{ textAlign: 'center' }}>Load more</Text>
+            {comment.replies.length > reliesNumber && <Text style={{ textAlign: 'center' }} onPress={() => setReliesNumber(10)}>Load more</Text>}
         </View>
     )
 

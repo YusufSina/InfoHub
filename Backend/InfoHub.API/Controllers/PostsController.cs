@@ -23,9 +23,10 @@ namespace InfoHub.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllPosts([FromQuery] PaginationParameters paginationParameters,[FromQuery] int categoryId=1)
+        public async Task<ActionResult> GetAllPosts([FromQuery] PaginationParameters paginationParameters, [FromQuery] int categoryId = 1, [FromQuery] string option = "hot")
         {
-            var posts = await _postService.GetAllPostsAsync(paginationParameters, categoryId);
+            var userId = (int)HttpContext.Items["UserId"];
+            var posts = await _postService.GetAllPostsAsync(paginationParameters, userId,categoryId, option);
 
             if (posts.Count == 0)
             {
@@ -105,7 +106,7 @@ namespace InfoHub.API.Controllers
         {
             var userId = (int)HttpContext.Items["UserId"];
 
-            _postService.UpVote(userId,id);
+            _postService.UpVote(userId, id);
             return new OkResult();
         }
         [HttpPost("downvote/{id}")]
@@ -113,7 +114,7 @@ namespace InfoHub.API.Controllers
         {
             var userId = (int)HttpContext.Items["UserId"];
 
-            _postService.DownVote(userId,id);
+            _postService.DownVote(userId, id);
             return new OkResult();
         }
     }

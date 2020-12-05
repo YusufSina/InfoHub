@@ -25,9 +25,9 @@ namespace InfoHub.Core.Services
             _categoryPostrepository = categoryPostrepository;
         }
 
-        public async Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters, int categoryId)
+        public async Task<PagedList<Post>> GetAllPostsAsync(PaginationParameters paginationParameters, int userId, int categoryId,string option)
         {
-            var posts = await _postRepository.GetAllPostsAsync(categoryId);
+            var posts = await _postRepository.GetAllPostsAsync(userId,categoryId, option);
             return PagedList<Post>.ToPagedList(posts.AsQueryable(), paginationParameters.PageNumber, paginationParameters.PageSize);
         }
 

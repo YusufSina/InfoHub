@@ -18,10 +18,10 @@ export const getMyPoints = (pageNumber) => async dispatch => {
         })
 };
 
-export const getPosts = (pageNumber, categoryNumber) => async dispatch => {
+export const getPosts = (pageNumber, categoryNumber, option) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
     dispatch({ type: POST_LOADING })
-    return Axios.get(URL + URL_POST + `?pageNumber=${pageNumber}&pageSize=20&categoryId=${categoryNumber}`, {
+    return Axios.get(URL + URL_POST + `?pageNumber=${pageNumber}&pageSize=20&categoryId=${categoryNumber}&option=${option}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -40,12 +40,14 @@ export const addPost = (data, categoryState) => async dispatch => {
     dispatch({ type: POST_LOADING })
     return Axios.post(URL + URL_POST, data, {
         headers: {
-            'Authorization': `Bearer ${token}asd`
+            'Authorization': `Bearer ${token}`
         }
     })
         .then(res => {
+            console.log(res);
             categoryState && dispatch({ type: ADD_POST, payload: res.data });
         }).catch(error => {
+            console.log(error);
             dispatch({ type: POST_ERROR });
         })
 
@@ -53,35 +55,22 @@ export const addPost = (data, categoryState) => async dispatch => {
 
 export const addPoint = (data) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
-
-    return Axios.post(URL + URL_POST + UP_VOTE + data,  null, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-        .then(res => {
-            dispatch({ type: ADD_POINT, payload: data });
-        }).catch(error => {
-            console.log(error)
-            dispatch({ type: POINT_ERROR });
-        })
-
+    try {
+        dispatch({ type: ADD_POINT, payload: data});
+        await Axios.post(URL + URL_POST + UP_VOTE + data, null, { headers: { 'Authorization': `Bearer ${token}` } })
+    } catch (error) {
+        dispatch({ type: REMOVE_POINT, payload: data});
+    }
 }
 
 export const removePoint = (data) => async dispatch => {
     const token = await AsyncStorage.getItem('token')
-
-    return Axios.post(URL + URL_POST + DOWN_VOTE + data,  null, {
-        headers: {
-            'Authorization': `Bearer ${token}`
-        }
-    })
-        .then(res => {
-            dispatch({ type: REMOVE_POINT, payload: data });
-        }).catch(error => {
-            console.log(error)
-            dispatch({ type: POINT_ERROR });
-        })
+    try {
+        dispatch({ type: REMOVE_POINT, payload: data });
+        await Axios.post(URL + URL_POST + DOWN_VOTE + data, null, { headers: { 'Authorization': `Bearer ${token}` } })
+    } catch (error) {
+        dispatch({ type: ADD_POINT, payload: data });
+    }
 
 }
 

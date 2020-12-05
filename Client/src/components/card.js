@@ -31,7 +31,7 @@ function Card({ navigation, post, sheetRef }) {
             </View>
 
             {/** Title */}
-            {post.title && <Text style={styles.titleText}>{post.title}</Text>}
+            {post.title != null && <Text style={styles.titleText}>{post.title}</Text>}
 
             {/** Url Preview */}
             <RNUrlPreview

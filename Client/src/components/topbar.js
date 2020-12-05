@@ -18,11 +18,11 @@ function TopBar(
 
             {leftIcon ? <Text onPress={leftIconClick}>
                 <AntDesign name={leftIcon} size={20} color="black" />
-            </Text>  : <View style={{ marginLeft: 10 }}></View>}
+            </Text>  : <View style={{ marginLeft: 20 }}></View>}
 
             <Text style={styles.title}>{title}</Text>
 
-            {rightIcon ? <Text onPress={rightIconClick} style={{ justifyContent: 'center' }} >
+            {rightIcon ? <Text onPress={rightIconClick} style={{ justifyContent: 'center',marginRight:10 }} >
                 <AntDesign name={rightIcon} size={20} color="black" />
             </Text> :  <View style={{ marginLeft: 10 }}></View> }
         </View>

@@ -9,6 +9,7 @@ export const POST_LOADING = "POST_LOADING";
 export const POST_ERROR = "POST_ERROR";
 export const INCREASE_COMMENTS = "INCREASE_COMMENTS";
 export const ADD_REPLY = "ADD_REPLY";
+export const CLEAR_POST = "CLEAR_POST";
 
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const SET_CATEGORY_NUMBER = "SET_CATEGORY_NUMBER";

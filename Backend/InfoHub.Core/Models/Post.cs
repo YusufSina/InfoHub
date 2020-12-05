@@ -16,6 +16,8 @@ namespace InfoHub.Core.Models
         public int CommentCount { get; set; }
         [NotMapped]
         public int PointCount { get; set; }
+        [NotMapped]
+        public bool IsPointed { get; set; }
         public int UserId { get; set; }
         [ForeignKey("UserId")]
         public User User { get; set; }

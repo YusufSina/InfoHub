@@ -18,34 +18,43 @@ namespace InfoHub.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<List<Post>> GetAllPostsAsync(int categoryId)
+        public async Task<List<Post>> GetAllPostsAsync(int userId, int categoryId, string option)
         {
-            var data = await (from p in _context.Posts
-                              join pp in _context.CategoryPosts on p.Id equals pp.PostId
-                              where pp.CategoryId == categoryId
-                              select new Post
-                              {
-                                  Id = p.Id,
-                                  Link = p.Link,
-                                  Title = p.Title,
-                                  PointCount = _context.UserPoints.Where(up => up.PostId == p.Id).Count(),
-                                  User = p.User,
-                                  CreatedAt = p.CreatedAt,
-                                  CommentCount = _context.Comments.Where(c => c.PostId == p.Id).Count(),
-                                  Categories = (from postCategory in _context.CategoryPosts
-                                                join category in _context.Categories on postCategory.CategoryId equals category.Id
-                                                where postCategory.PostId == p.Id
-                                                select new Category
-                                                {
-                                                    Id = category.Id,
-                                                    Name = category.Name
-                                                }).ToList()
-                              })
-                               .OrderByDescending(x => x.CreatedAt)
-                               .Take(20)
-                               .ToListAsync();
+            List<Post> posts = new List<Post>();
 
-            return data;
+            var query = (from p in _context.Posts
+                         join pp in _context.CategoryPosts on p.Id equals pp.PostId
+                         where pp.CategoryId == categoryId
+                         select new Post
+                         {
+                             Id = p.Id,
+                             Link = p.Link,
+                             Title = p.Title,
+                             PointCount = _context.UserPoints.Where(up => up.PostId == p.Id).Count(),
+                             User = p.User,
+                             CreatedAt = p.CreatedAt,
+                             CommentCount = _context.Comments.Where(c => c.PostId == p.Id).Count(),
+                             Categories = (from postCategory in _context.CategoryPosts
+                                           join category in _context.Categories on postCategory.CategoryId equals category.Id
+                                           where postCategory.PostId == p.Id
+                                           select new Category
+                                           {
+                                               Id = category.Id,
+                                               Name = category.Name
+                                           }).ToList(),
+                             IsPointed = _context.UserPoints.Where(up => up.PostId == p.Id && up.UserId == userId).Any()
+                         });
+
+            if (option == "hot")
+            {
+                posts = await query.OrderByDescending(x => x.PointCount).Take(20).ToListAsync();
+            }
+            if (option == "latest")
+            {
+                posts = await query.OrderByDescending(x => x.CreatedAt).Take(20).ToListAsync();
+            }
+
+            return posts;
         }
 
 
@@ -69,7 +78,9 @@ namespace InfoHub.Infrastructure.Repositories
                               {
                                   Id = category.Id,
                                   Name = category.Name
-                              }).ToList()
+                              }).ToList(),
+                IsPointed = _context.UserPoints.Where(up => up.PostId == x.Id && up.UserId == userId).Any()
+
             })
             .OrderByDescending(x => x.CreatedAt)
             .ToListAsync();

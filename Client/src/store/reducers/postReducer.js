@@ -8,7 +8,7 @@ import {
     SET_CATEGORY_NUMBER,
     ADD_POINT,
     REMOVE_POINT,
-    POINT_ERROR,
+    CLEAR_POST,
     POINT_LOADING,
     INCREASE_COMMENTS,
     ADD_REPLY,
@@ -80,6 +80,7 @@ export default (state = initialState, action) => {
             // var updatedPosts = state.posts.map(x => x.id == payload ? (++x.pointCount && x) : x)
             var updatedPost = state.posts.find(x => x.id === payload)
             updatedPost.pointCount++;
+            updatedPost.isPointed = true
 
             return {
                 ...state,
@@ -90,7 +91,7 @@ export default (state = initialState, action) => {
         case REMOVE_POINT:
             var updatedPost = state.posts.find(x => x.id === payload)
             updatedPost.pointCount--;
-
+            updatedPost.isPointed = false
             return {
                 ...state,
                 posts: state.posts.map(x => x.id == payload ? (updatedPost) : x),
@@ -107,6 +108,11 @@ export default (state = initialState, action) => {
                     post => post.id === payload ? { ...post, commentCount: post.commentCount += 1 }
                         : post),
                 loading: false
+            }
+        case CLEAR_POST:
+            return {
+                ...state,
+                posts: []
             }
         default:
             return state

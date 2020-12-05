@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {  SafeAreaView, ImageBackground,  StyleSheet } from 'react-native'
+import { SafeAreaView, ImageBackground, StyleSheet, Text, View } from 'react-native'
 import { SocialIcon } from 'react-native-elements'
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen'
 import welcome from '../../../assets/welcome.png'
@@ -64,14 +64,19 @@ export default function Welcome() {
         <SafeAreaView style={{ flex: 1, backgroundColor: '#21618C' }}>
             <Spinner visible={loading} />
             <ImageBackground source={welcome} style={styles.imageContainer}>
-                <SocialIcon
-                    title={"Sign In With Google"}
-                    button={true}
-                    light
-                    type={"google"}
-                    style={{ padding: 20 }}
-                    onPress={signInWithGoogleAsync}
-                />
+                <View style={{marginTop:heightPercentageToDP('28%'),alignItems: 'center',}}>
+                    <Text style={styles.title}>Welcome To Infohub</Text>
+                    <Text style={styles.subtitle}>Immerse yourself in great content anywhere </Text>
+                    <SocialIcon
+                        title={"Sign In With Google"}
+                        button={true}
+                        type={"google"}
+                        style={{ padding: 20, borderRadius: 0, }}
+                        fontStyle={{ color: 'white' }}
+                        iconColor="white"
+                        onPress={signInWithGoogleAsync}
+                    />
+                </View>
             </ImageBackground>
         </SafeAreaView>
     )
@@ -81,7 +86,18 @@ const styles = StyleSheet.create({
         flex: 1,
         height: heightPercentageToDP('100%'),
         width: widthPercentageToDP('100%'),
-        justifyContent: 'center',
         alignItems: 'center',
     },
+    title: {
+        color: 'white',
+        fontSize: heightPercentageToDP('3.5%'),
+        fontFamily: 'ArchitectsDaughter-Regular',
+        marginBottom:10
+    },
+    subtitle: {
+        color: 'white',
+        fontSize: heightPercentageToDP('2.3%'),
+        fontFamily: 'ArchitectsDaughter-Regular',
+        marginBottom:heightPercentageToDP('20%')
+    }
 })
